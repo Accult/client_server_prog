@@ -9,12 +9,17 @@ This repository contains a client-server program developed in Python using the D
    git clone https://github.com/Accult/client_server_prog.git
    ```
 
-2. **Create a Virtual Environment**
+2. **Navigate to the Project Directory**
+   ```
+   cd client_server_prog
+   ```
+
+3. **Create a Virtual Environment**
    ```
    python3 -m venv venv
    ```
 
-3. **Activate the Virtual Environment**
+4. **Activate the Virtual Environment**
    - For Windows:
      ```
      venv\Scripts\activate
@@ -24,39 +29,39 @@ This repository contains a client-server program developed in Python using the D
      source venv/bin/activate
      ```
 
-4. **Install Required Packages**
+5. **Install Required Packages**
    ```
    pip install -r requirements.txt
    ```
 
-5. **Create and Configure .env File**
+6. **Create and Configure .env File**
    - Create a `.env` file based on the `.env-example` template.
    - Fill in the required environment variables such as database credentials and encryption keys.
 
-6. **Run Migrations**
+7. **Run Migrations**
    ```
    python manage.py migrate
    ```
 
-7. **Create a Superuser**
+8. **Create a Superuser**
    ```
    python manage.py createsuperuser
    ```
 
-8. **Start the Django Development Server**
+9. **Start the Django Development Server**
    ```
    python manage.py runserver
    ```
 
    Access the Django admin panel at `http://localhost:8000/admin` to ensure that user data input is stored in the database.
 
-9. **Run the Server**
-   In a new console window, run the server script:
+10. **Run the Server**
+    In a new console window, run the server script:
    ```
    python core/server.py
    ```
 
-10. **Run the Client**
+11. **Run the Client**
     In another console window, run the client script:
    ```
    python core/client.py
