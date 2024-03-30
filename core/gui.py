@@ -11,7 +11,6 @@ def submit_callback():
     last_name = entry_last_name.get()
     age = entry_age.get()
     gender = combobox_gender.get().lower()
-    print(gender)
 
     data = {"first_name": first_name, "last_name": last_name, "age": age, "gender": gender}
 

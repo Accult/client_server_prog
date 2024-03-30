@@ -10,9 +10,29 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "client_server_prog.settings")
 import django
 
 django.setup()
-from core.models import User
 from client_server_prog.settings import FERNET_KEY, SOCKET_HOST, SOCKET_PORT
 from core.serializers import UserSerializer
+
+
+def create_user_from_data(json_data):
+    """
+    Creates a new user object from the provided JSON data.
+
+    Args:
+        json_data (dict): The JSON data containing user information.
+
+    Returns:
+        str: A message indicating success or failure.
+    """
+    serializer = UserSerializer(data=json_data)
+    if serializer.is_valid():
+        serializer.create(serializer.validated_data)
+        return "Data processed successfully!"
+    else:
+        error_messages = [
+            f"{field}: {error_msg}" for field, errors in serializer.errors.items() for error_msg in errors
+        ]
+        return "\n".join(error_messages)
 
 
 def handle_data(data, key, client_socket):
@@ -31,17 +51,8 @@ def handle_data(data, key, client_socket):
     decrypted_data = cipher_suite.decrypt(data).decode()
     json_data = json.loads(decrypted_data)
 
-    serializer = UserSerializer(data=json_data)
-    if serializer.is_valid():
-        User.objects.create(**json_data)
-        client_socket.sendall("Data processed successfully!".encode())
-    else:
-        error_messages = [
-            f"{field}: {error_msg}" for field, errors in serializer.errors.items() for error_msg in errors
-        ]
-
-        error_message = "\n".join(error_messages)
-        client_socket.sendall(error_message.encode())
+    message = create_user_from_data(json_data)
+    client_socket.sendall(message.encode())
 
 
 def main():

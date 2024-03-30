@@ -55,20 +55,33 @@ This repository contains a client-server program developed in Python using the D
 
    Access the Django admin panel at `http://localhost:8000/admin` to ensure that user data input is stored in the database.
 
+
+   **Encryption Key**
+
+The project has a key.txt file that is used by default to encrypt and decrypt data
+To create a new key, run the command
+
+```
+python key_generator.py
+```
+Next, enter the file name in the terminal in the format <name>.txt
+To use the new key you have created, you need to add KEY_FILE= <name>.txt to the .env file
+
+
 10. **Run the Server**
     In a new console window, run the server script:
    ```
    python core/server.py
    ```
 
-11. **Run the Client **
+11. **Run the Client Interface**
     In another console window, run following command:
    ```
    python core/gui.py
 
    ```
 
-    Follow the instructions in the client console to input user data. This data will be encrypted and sent to the server for decryption and storage in the database.
+Follow the instructions in the client interface to input user data. This data will be encrypted and sent to the server for decryption and storage in the database.
 
 ### Additional Notes
 

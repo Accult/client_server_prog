@@ -130,5 +130,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 KEY_FILE = os.getenv("KEY_FILE", "key.txt")
 
 FERNET_KEY = KeyGenerator(KEY_FILE).load_key()
-SOCKET_HOST = os.getenv("SOCKET_HOST")
-SOCKET_PORT = int(os.getenv("SOCKET_PORT"))
+SOCKET_HOST = os.getenv("SOCKET_HOST", "localhost")
+SOCKET_PORT = int(os.getenv("SOCKET_PORT", 12345))
