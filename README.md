@@ -61,10 +61,11 @@ This repository contains a client-server program developed in Python using the D
    python core/server.py
    ```
 
-11. **Run the Client**
-    In another console window, run the client script:
+11. **Run the Client **
+    In another console window, run following command:
    ```
-   python core/client.py
+   python core/gui.py
+
    ```
 
     Follow the instructions in the client console to input user data. This data will be encrypted and sent to the server for decryption and storage in the database.

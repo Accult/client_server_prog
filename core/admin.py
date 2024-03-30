@@ -4,7 +4,9 @@ from core.models import User
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ["id", "first_name", "last_name", "age"]
+    list_display = ["id", "first_name", "last_name", "age", "gender"]
+    search_fields = ["first_name", "last_name"]
+    list_filter = ["gender"]
 
 
 admin.site.unregister(Group)
